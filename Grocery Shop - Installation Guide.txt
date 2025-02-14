@@ -1,0 +1,51 @@
+Grocery Shop - Installation Guide
+Technologies Used
+
+    Backend: .NET 6
+    Frontend: React
+    Database: SQL Server / JSON API
+
+Setting Up the Backend
+Option 1: Using JSON API (No Database Required)
+
+    כל ה-URLs של ה-JSON כבר מוגדרים ב-appsettings.json.
+    אין צורך בחיבור למסד נתונים, פשוט להפעיל את ה-Backend.
+
+🔹 הרצת ה-Backend:
+
+dotnet run
+
+Option 2: Using SQL Server (Database Required)
+
+אם רוצים לעבוד עם מסד נתונים אמיתי, יש לחבר SQL Server ולבצע Migrations.
+1️⃣ הגדרת חיבור למסד נתונים
+
+ב-appsettings.json, להגדיר את חיבור ה-SQL Server תחת:
+
+"ConnectionStrings": {
+  "DefaultConnection": "Server=YOUR_SERVER;Database=GroceryShopDb;User Id=YOUR_USER;Password=YOUR_PASSWORD;TrustServerCertificate=True;"
+}
+
+2️⃣ הרצת Migrations והתקנת מסד הנתונים
+
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+
+🔹 הרצת ה-Backend לאחר מכן:
+
+dotnet run
+
+Setting Up the Frontend
+
+    להתקין את התלויות:
+
+npm install
+
+    להריץ את הפרויקט:
+
+npm start
+
+    אם משתמשים ב-API על JSONBin או במסד נתונים, יש לוודא שה-Backend פועל.
+
+🔹 אם צריך לשנות כתובת API
+ערוך את REACT_APP_API_URL בקובץ .env.
